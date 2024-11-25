@@ -1,0 +1,102 @@
+/* Estilos generales */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía más moderna */
+  margin: 0;
+  padding: 0;
+  background-color: #e9eff1; /* Fondo más suave */
+  color: #333; /* Color de texto principal */
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 900px;
+  margin: 40px auto; /* Más espacio en los márgenes */
+  padding: 30px;
+  background: #ffffff; /* Fondo blanco para los formularios y contenido */
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más sutil y suave */
+}
+
+/* Títulos */
+h1, h2 {
+  text-align: center;
+  color: #333; /* Color de los títulos */
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Estilo de formulario */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Más espacio entre los elementos del formulario */
+}
+
+/* Etiquetas de los campos */
+label {
+  font-weight: 500;
+  color: #5c5c5c; /* Color más suave para las etiquetas */
+}
+
+/* Estilo de los campos de entrada */
+input {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc; /* Borde gris suave */
+  border-radius: 6px;
+  background-color: #f9f9f9; /* Fondo suave para los inputs */
+  transition: border-color 0.3s; /* Transición suave al enfocar */
+}
+
+input:focus {
+  border-color: #0056b3; /* Borde azul al enfocar */
+  outline: none;
+}
+
+/* Estilo del botón */
+button {
+  padding: 12px 20px;
+  background-color: #007bff; /* Azul profesional */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3; /* Azul más oscuro al pasar el ratón */
+}
+
+/* Estilo de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+th, td {
+  border: 1px solid #e0e0e0; /* Borde más suave */
+  padding: 12px;
+  text-align: center;
+  color: #555; /* Color de texto más suave en la tabla */
+}
+
+th {
+  background-color: #f1f5f9; /* Fondo gris claro para los encabezados */
+  color: #333;
+  font-weight: 600;
+}
+
+td {
+  background-color: #ffffff; /* Fondo blanco para las celdas */
+}
+
+tr:nth-child(even) td {
+  background-color: #f9f9f9; /* Fondo alterno para filas */
+}
+
+tr:hover td {
+  background-color: #f1f5f9; /* Cambio de fondo al pasar el ratón */
+}

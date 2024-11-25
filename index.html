@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tienda de Bebidas</title>
+  <link rel="stylesheet" href="estilo.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <link rel="icon" href="icono/favicon.ico"  type="image/x-icon">
+</head>
+<body>
+  <div class="container">
+    <h1>Tienda de Bebidas</h1>
+    <form id="ventaForm">
+      <label for="producto">Producto:</label>
+      <input type="text" id="producto" required>
+
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" id="cantidad" min="1" required>
+
+      <label for="precio">Precio Unitario:</label>
+      <input type="number" id="precio" step="0.01" min="0.01" required>
+
+      <button type="submit">Registrar Venta</button>
+    </form>
+
+    <h2>Registro de Ventas</h2>
+    <table id="ventasTable">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button id="exportar">Descargar Registro</button>
+    <button id="limpiar">Limpiar Registro</button>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
