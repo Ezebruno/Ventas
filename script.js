@@ -15,6 +15,7 @@ form.addEventListener("submit", (e) => {
   const producto = document.getElementById("producto").value.trim();
   const cantidad = parseInt(document.getElementById("cantidad").value);
   const precio = parseFloat(document.getElementById("precio").value);
+  const porMayor = document.getElementById("porMayor").checked;
 
   // Validate form data
   if (!producto || isNaN(cantidad) || cantidad <= 0 || isNaN(precio) || precio <= 0) {
@@ -24,7 +25,7 @@ form.addEventListener("submit", (e) => {
 
   // Calculate total and save sale
   const total = cantidad * precio;
-  const venta = { producto, cantidad, precio, total };
+  const venta = { producto, cantidad, precio, total, porMayor };
   saveSale(venta);
 
   // Add to table
@@ -57,11 +58,12 @@ function addSaleToTable(venta) {
     <td>${venta.cantidad}</td>
     <td>${venta.precio.toFixed(2)}</td>
     <td>${venta.total.toFixed(2)}</td>
+    <td>${venta.porMayor ? "Por Mayor" : "Por Menor"}</td>
   `;
   ventasTableBody.appendChild(row);
 }
 
-// Export sales as PDF with a table
+// Export sales as PDF with a table and total amount
 exportarBtn.addEventListener("click", () => {
   const ventas = JSON.parse(localStorage.getItem("ventas")) || [];
   if (ventas.length === 0) {
@@ -84,15 +86,24 @@ exportarBtn.addEventListener("click", () => {
     venta.cantidad,
     `$${venta.precio.toFixed(2)}`,
     `$${venta.total.toFixed(2)}`,
+    venta.porMayor ? "Por Mayor" : "Por Menor",
   ]);
+
+  // Calculate total amount
+  const totalRecaudado = ventas.reduce((sum, venta) => sum + venta.total, 0);
 
   // Generate the table with autoTable
   doc.autoTable({
-    head: [["#", "Producto", "Cantidad", "Precio Unitario", "Total"]],
+    head: [["#", "Producto", "Cantidad", "Precio Unitario", "Total", "Tipo de Venta"]],
     body: tableData,
     startY: 20,
     theme: "striped",
   });
+
+  // Add total amount below the table
+  const finalY = doc.lastAutoTable.finalY + 10; // Position below the table
+  doc.setFontSize(14);
+  doc.text(`Monto Total Recaudado: $${totalRecaudado.toFixed(2)}`, 10, finalY);
 
   // Download the PDF
   doc.save("registro_ventas.pdf");
@@ -110,3 +121,4 @@ limpiarBtn.addEventListener("click", () => {
     document.getElementById("producto").focus();
   }
 });
+
